@@ -13,11 +13,11 @@ function square(x, y, n, grid) {
 
   this.previous = undefined;
 
-  this.width = (width - 50) / n;
-  this.height = (height - 50) / n;
+  this.width = (width - 50) / rows;
+  this.height = (height - 50) / columns;
 
-  this.pixelStartX = this.x * (width - 50) / n;
-  this.pixelStartY = this.y * (height - 50) / n;
+  this.pixelStartX = this.x * this.width;
+  this.pixelStartY = this.y * this.height;
 
   //square color
   this.col = (grid[x][y] && grid[x][y].col) || ((x + y) % 2 !== 0 ? dark : light);
@@ -92,13 +92,16 @@ function square(x, y, n, grid) {
 
   function heuristic(temp) {
     // eucladean
-    //return dist(temp.x, temp.y, end.x, end.y);
+    if(selectedHeuristic == 'Eucladean')
+      return dist(temp.x, temp.y, end.x, end.y);
 
     // taxi cab
-    //return abs(temp.x - end.x) + abs(temp.y - end.y);
+    else if(selectedHeuristic == 'Taxi Cab')
+      return abs(temp.x - end.x) + abs(temp.y - end.y);
 
-    //mine base on knight movement
-    return (temp.x - end.x)*(temp.x - end.x) + (temp.y - end.y)*(temp.y - end.y);
+    //sum of error squared
+    else
+      return (temp.x - end.x)*(temp.x - end.x) + (temp.y - end.y)*(temp.y - end.y);
   }
 
   this.inClosedSet = function(sq) {
@@ -106,10 +109,19 @@ function square(x, y, n, grid) {
       return item.x == sq.x && item.y == sq.y;
     });
   }
-  /*
+
   this.clicked = function() {
     if(mouseX < this.pixelStartX || mouseX > this.pixelStartX + this.width) return;
     if(mouseY < this.pixelStartY || mouseY > this.pixelStartY + this.height) return;
+
+    if(clickCount == 1) {
+      this.display("#FFF8DC");
+      start = this;
+      createP('You selected (' + this.x + ', ' + this.y + ') as your start point');
+    } else if(clickCount == 2) {
+      createP('You selected (' + this.x + ', ' + this.y + ') as your end point');
+      this.display("#FFF8DC");
+      end = this;
+    }
   }
-  */
 }

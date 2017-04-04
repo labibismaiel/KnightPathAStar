@@ -1,0 +1,23 @@
+#canvas-container {
+  float: left;
+}
+
+#controls-container {
+  float: left;
+}
+
+#controls-container > * {
+  display: block;
+  padding 5px;
+  margin: 10px;
+}
+
+.instructions {
+  border: solid 1px #ccc;
+  border-radius: 10px;
+  width: 50%;
+  margin: auto;
+  padding: 20px;
+  background: rgba(0, 128, 128, 0.53);
+  margin-bottom: 30px;
+}

@@ -3,10 +3,30 @@
 <head>
   <title>A*</title>
   <script type="text/javascript" src="libraries/p5.js"></script>
+  <script type="text/javascript" src="libraries/p5.dom.js"></script>
   <script type="text/javascript" src="sketch.js"></script>
   <script type="text/javascript" src="square.js"></script>
+
+  <link  rel="stylesheet" href="./style.css"></link>
 </head>
 <body>
-
+<div class="instructions">
+  <p>
+    - Decide the number of rows and columns and the size of the canvas, input them in the text boxes on the right
+  </p>
+  <p>
+    - Click on the board to select start and end locations of the search (default is top left to bottom right)
+  </p>
+  <p>
+    - Decide The heuristic function to use, from the drop down menu
+  </p>
+  <p>
+    - Click Run and see it happen
+  </p>
+</div>
+<div class="main">
+  <div id="canvas-container"></div>
+  <div id="controls-container"></div>
+</div>
 </body>
 </html>
